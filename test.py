@@ -140,12 +140,17 @@ def run_game():
     SCREEN_WIDTH, SCREEN_HEIGHT = 600, 480
     BG_COLOR = 0, 0, 150
     CREEP_FILENAMES = 'dalek.png'
+    playerPic = pygame.image.load('tardis.png') 
     N_CREEPS = 3
 
     pygame.init()
     screen = pygame.display.set_mode(
                 (SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
     clock = pygame.time.Clock()
+
+    #start position for the player
+    playerStartX = 260
+    playerStartY = 300
 
     # Create N_CREEPS random creeps.
     creeps = []    
@@ -172,6 +177,7 @@ def run_game():
         
         # Redraw the background
         screen.fill(BG_COLOR)
+        screen.blit(playerPic, (playerStartX,playerStartY))
         
         # Update and redraw all creeps
         for creep in creeps:
